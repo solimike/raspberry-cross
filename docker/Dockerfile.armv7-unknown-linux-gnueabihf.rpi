@@ -1,0 +1,18 @@
+# Custom Rust cross compilation container intended to target building software on the
+# Raspberry Pi.
+#  
+# See https://github.com/rust-embedded/cross#custom-docker-images for further 
+# background.
+FROM rustembedded/cross:armv7-unknown-linux-gnueabihf-0.2.1
+
+# Diagnosing issues is quite tedious without some more tools.
+RUN apt-get update && \
+    apt-get install --assume-yes vim
+
+# In order to support cross-compilation of software to access the Sensehat IMU we need 
+# to have a cross-compiled version of the RTIMU library available for crates like 
+# sensehat-rs.
+COPY armv7-unknown-linux-gnueabihf-toolchain.cmake /
+COPY rtimulib.sh /
+RUN /rtimulib.sh armv7-unknown-linux-gnueabihf-toolchain.cmake
+    

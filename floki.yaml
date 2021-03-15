@@ -1,0 +1,9 @@
+image:
+  build:
+    name: solimike/raspberry_cross
+    dockerfile: docker/Dockerfile.armv7-unknown-linux-gnueabihf.rpi
+    context: docker
+
+init:
+  - echo "Specialized Rust Cross Compiler for Raspberry Pi (ARM v7) targets"
+  
