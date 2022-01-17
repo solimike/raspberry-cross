@@ -29,6 +29,10 @@ The image currently adds support to the base image for:
   Required to support the [Sense HAT](https://www.raspberrypi.org/products/sense-hat/)
   using, for example, the [sensehat-rs](https://crates.io/crates/sensehat) crate.
 
+* Python 3.x
+
+  Required to support compiling code that will use [PyO3](https://pyo3.rs/).
+
 ## Build instructions
 
 ### Interactive debugging
