@@ -7,13 +7,6 @@
 #
 #     https://github.com/rust-embedded/cross/blob/master/docker/musl.sh
 #
-# First of all we build the Python for the container itself (i.e. a native build)
-# then we do a cross compilation for the target ARM architecture. This is necessary
-# because the cross-complilation of Python relies on a host installation of Python and
-# the Python 3.5 that is currently packaged with the Ubuntu 16.04 that is the base for 
-# Rusts cross compilation tools is too old to support cross compilation of later 
-# versions of Python (e.g. Python 3.7) that rely on features like f-strings.
-#
 # Sources of info:
 #
 #   1)  https://gitlab.com/Spindel/rust-python-cross-example
@@ -46,6 +39,7 @@ main() {
     # Create a temp directory for the build.
     local td
     td="$(mktemp -d)"
+    pushd "${td}"
     echo "Building in ${td}"
 
     # Fetch ARM architecture dependencies: tell APT where to find the resources and
@@ -60,7 +54,6 @@ main() {
                                  libjpeg-dev:armhf
 
     # Fetch the source tarball.
-    pushd "${td}"
     curl --retry 3 -sSfL "https://www.python.org/ftp/python/${version}/Python-${version}.tgz" -O
     tar --strip-components=1 -xzf "Python-${version}.tgz"
 
