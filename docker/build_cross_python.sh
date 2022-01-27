@@ -48,6 +48,17 @@ main() {
     td="$(mktemp -d)"
     echo "Building in ${td}"
 
+    # Fetch ARM architecture dependencies: tell APT where to find the resources and
+    # add the architecture first. The addition of armhf to the sources list is a bit
+    # crude so triggers some "not found" errors in the update which we have to ignore.
+    sed -i "s/i386]/i386,armhf]/" /etc/apt/sources.list
+    dpkg --add-architecture armhf
+    apt-get update || true
+    apt-get install --assume-yes libssl-dev:armhf \
+                                 libffi-dev:armhf \
+                                 zlib1g-dev:armhf \
+                                 libjpeg-dev:armhf
+
     # Fetch the source tarball.
     pushd "${td}"
     curl --retry 3 -sSfL "https://www.python.org/ftp/python/${version}/Python-${version}.tgz" -O
@@ -70,7 +81,7 @@ main() {
                                         --host=arm-unknown-linux-gnueabihf \
                                         --disable-ipv6 \
                                         --enable-shared
-    make altinstall
+    make install
 
     # Cleanup all the files we used.
     popd

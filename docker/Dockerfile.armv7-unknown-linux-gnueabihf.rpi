@@ -8,9 +8,10 @@ FROM rustembedded/cross:armv7-unknown-linux-gnueabihf-0.2.1
 # Add dependencies:
 #   1) Diagnosing issues is quite tedious without some more tools, like vim.
 #   2) Compiling Python requires FFI and compression library dev packages.
+#   3) Matplotlib requires libjpeg.
 RUN apt-get update && \
     apt-get upgrade --assume-yes && \
-    apt-get install --assume-yes vim libffi-dev zlib1g-dev
+    apt-get install --assume-yes vim libssl-dev libffi-dev zlib1g-dev libjpeg-dev
 
 # In order to support cross-compilation of software to access the Sensehat IMU we need 
 # to have a cross-compiled version of the RTIMU library available for crates like 
@@ -21,7 +22,7 @@ RUN /rtimulib.sh armv7-unknown-linux-gnueabihf-toolchain.cmake
 
 # In order to support cross compilation of Python integration using PyO3, we need to
 # have a cross-compiled version of Python and set PyO3 environment variable accordingly.
-ARG python_version=3.7.3
+ARG python_version=3.7.12
 COPY build_local_python.sh /
 RUN /build_local_python.sh ${python_version}
 
