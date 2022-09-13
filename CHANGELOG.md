@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.2.0]
+
+### Added
+
+- Support for RaspberryPi OS `bullseye`.
+
+### Changed
+
+- Updated to latest released `cross` (V0.2.4).
+
+### Fixed
 ## [0.1.0]
 
 ### Added

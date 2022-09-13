@@ -3,7 +3,7 @@
 #  
 # See https://github.com/rust-embedded/cross#custom-docker-images for further 
 # background.
-FROM rustembedded/cross:armv7-unknown-linux-gnueabihf-0.2.1
+FROM ghcr.io/cross-rs/armv7-unknown-linux-gnueabihf:latest
 
 # Add dependencies:
 #   1) Diagnosing issues is quite tedious without some more tools, like vim.
@@ -22,7 +22,7 @@ RUN /rtimulib.sh armv7-unknown-linux-gnueabihf-toolchain.cmake
 
 # In order to support cross compilation of Python integration using PyO3, we need to
 # have a cross-compiled version of Python and set PyO3 environment variable accordingly.
-ARG python_version=3.7.12
+ARG python_version=3.9.2
 COPY build_local_python.sh /
 RUN /build_local_python.sh ${python_version}
 
