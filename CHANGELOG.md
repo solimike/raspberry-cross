@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+## [0.2.1]
+
+### Changed
+
+- Updated to latest released `cross` (V0.2.5).
+- Updated to latest vesrion of Python V3.9 (V3.9.17).
+- **DEPRECATED THE PROJECT** - see [why](README.md#DEPRECATION)
+
 ## [0.2.0]
 
 ### Added
@@ -18,6 +26,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated to latest released `cross` (V0.2.4).
 
 ### Fixed
+
 ## [0.1.0]
 
 ### Added
@@ -52,7 +61,9 @@ _codebase's changes!_
 
 _TODO: update to reflect this codebase once published to GitHub!_
 
-[unreleased]: https://github.com/solimike/raspberry-cross/compare/v0.0.5...HEAD
-[0.1.0]: https://github.com/solimike/raspberry-cross/compare/v0.0.2...v0.0.5
+[unreleased]: https://github.com/solimike/raspberry-cross/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/solimike/raspberry-cross/compare/v0.2.0...v0.2.1
+[0.2.0]: https://github.com/solimike/raspberry-cross/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/solimike/raspberry-cross/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/solimike/raspberry-cross/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/solimike/raspberry-cross/releases/tag/v0.0.1
