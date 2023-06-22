@@ -50,8 +50,7 @@ main() {
     apt-get update || true
     apt-get install --assume-yes libssl-dev:armhf \
                                  libffi-dev:armhf \
-                                 zlib1g-dev:armhf \
-                                 libjpeg-dev:armhf
+                                 zlib1g-dev:armhf 
 
     # Fetch the source tarball.
     curl --retry 3 -sSfL "https://www.python.org/ftp/python/${version}/Python-${version}.tgz" -O
